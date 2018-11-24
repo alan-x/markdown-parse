@@ -1,6 +1,6 @@
 const tokenize = require('./../lib/tokenize')
 
-describe('tokenize', () => {
+describe('title', () => {
     test('title 1', () => {
         expect(tokenize(`# title 1`)).toBe({})
     })
@@ -19,5 +19,37 @@ describe('tokenize', () => {
     })
     test('title 6', () => {
         expect(tokenize(`###### title 6`)).toBe({})
+    })
+})
+
+describe('ul', () => {
+    test('ul 1', () => {
+        expect(tokenize(`- ul`)).toBe({})
+    })
+})
+
+describe('ol', () => {
+    test('ol', () => {
+        expect(tokenize(`1. ol`)).toBe({})
+    })
+})
+
+
+describe('content tokenize', () => {
+    test('text', () => {
+        expect(tokenize('这是文字')).toBe({})
+    })
+    test('``', () => {
+        expect(tokenize('abc`def`ghi')).toBe({})
+    })
+    test('`', () => {
+        expect(tokenize('abc`defghi')).toBe({})
+    })
+
+    test('**', () => {
+        expect(tokenize('*1*')).toBe({})
+    })
+    test('`', () => {
+        expect(tokenize('abc`defghi')).toBe({})
     })
 })
