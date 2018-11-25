@@ -1,8 +1,11 @@
+const compile = require('./../lib/compile')
 const tokenize = require('./../lib/tokenize')
 
 describe('title', () => {
     test('title 1', () => {
-        expect(tokenize(`# title 1`)).toBe({})
+        let tokenList = tokenize(`# title 1`)
+        console.log(tokenList)
+        expect(compile(tokenList)).toBe({})
     })
 
     test('title 2', () => {
@@ -24,7 +27,9 @@ describe('title', () => {
 
 describe('multiple code', () => {
     test('multiple code', () => {
-        expect(tokenize('```\nlet i=0\n```')).toBe({})
+        let tokenList = tokenize('```\nlet i=0\n```')
+        console.log(tokenList)
+        expect(compile(tokenList)).toBe({})
     })
 })
 
